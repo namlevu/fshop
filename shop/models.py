@@ -58,13 +58,13 @@ class Product(db.Model):
 
 class Photo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, ForeignKey('product.id'))
+    product_id = db.Column(db.String(32), db.ForeignKey('product.uuid'))
     url = db.Column(db.String(256))
 
 
 class Cost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, ForeignKey('product.id'))
+    product_id = db.Column(db.String(32), db.ForeignKey('product.uuid'))
     amount = db.Column(db.Integer)
     reason = db.Column(db.String(256))
     created_at = db.Column(db.DateTime)

@@ -12,3 +12,6 @@ migrate = Migrate(app, db)
 
 from shop.main import bp as main_bp
 app.register_blueprint(main_bp)
+
+
+from shop import models
