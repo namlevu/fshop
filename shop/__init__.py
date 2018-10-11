@@ -15,9 +15,13 @@ login.login_view = 'auth.login'
 
 global first_time
 first_time = True
-
+# -------------------------------------------------
 from shop.auth import bp as auth_bp
 app.register_blueprint(auth_bp, url_prefix='/auth')
+# -------------------------------------------------
+from shop.product import bp as prod_bp
+app.register_blueprint(prod_bp, url_prefix='/product')
+# -------------------------------------------------
 from shop.main import bp as main_bp
 app.register_blueprint(main_bp)
 
