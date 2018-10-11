@@ -1,0 +1,4 @@
+---
+applications:
+- name: bshop
+  memory: 128M

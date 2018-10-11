@@ -1,0 +1,8 @@
+Flask
+flask-login
+Flask-WTF
+Flask-Babel
+Flask-QRcode
+flask-sqlalchemy
+flask-migrate
+Flask-Bootstrap
