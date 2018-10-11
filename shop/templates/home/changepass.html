@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="form-heading">Product Management System</h1>
+    <div class="login-form">
+        <div class="main-div">
+            <div class="panel">
+                <h2>Admin Login</h2>
+                <p>Please enter your old and new password</p>
+            </div>
+
+            <form id="Login" action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                {% if msg %}
+                <div>{{ msg }}</div>
+                {% endif %}
+                <div class="form-group">
+                    {{ form.old_password(size=32) }}
+                </div>
+                <div class="form-group">
+                    {{ form.new_password(size=32) }}
+                </div>
+                <div class="form-group">
+                    {{ form.password_repeat(size=32) }}
+                </div>
+
+                {{ form.submit() }}
+            </form>
+        </div>
+        <p class="botto-text"> Nam V L </p>
+    </div>
+</div>

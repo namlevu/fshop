@@ -1,10 +1,12 @@
 # shop.models
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
 from shop import db
+from shop import login
 
 
-class Admin(db.Model):
+class Admin(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(32), index=True, unique=True)
     email = db.Column(db.String(128), index=True, unique=True)
@@ -21,7 +23,7 @@ class Admin(db.Model):
         return check_password_hash(self.password_hash, password)
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fullname = db.Column(db.String(64))
     username = db.Column(db.String(64), index=True, unique=True)
@@ -37,6 +39,10 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    @login.user_loader
+    def load_user(id):
+      return User.query.get(int(id))
 
 
 class Product(db.Model):
