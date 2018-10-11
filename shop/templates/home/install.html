@@ -1,0 +1,27 @@
+Welcome to new site
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.fullname.label }}<br>
+            {{ form.fullname(size=64) }}
+        </p>
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email }}
+        </p>
+        <p>
+            {{ form.password_hash.label }}<br>
+            {{ form.password_hash }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    </div>
+  </div>
+</div>
