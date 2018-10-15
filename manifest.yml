@@ -1,4 +1,4 @@
 ---
 applications:
-- name: bshop
+- name: fshop
   memory: 128M
