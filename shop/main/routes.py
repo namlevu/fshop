@@ -23,14 +23,6 @@ def index():
     #u = "fake"
     return render_template('home/index.html', online_user=u)
 
-@bp.route('/new_user', methods=['GET'])
-def new_user():
-  p = Photo(url="https://cdn3.iconfinder.com/data/icons/cat-force/256/cat_hungry.png")
-  p.save()
-  u = User(username="meo", photo=p)
-  u.save()
-  return redirect(url_for('main.index'))
-
 @bp.route('/install', methods=['GET', 'POST'])
 def install():
     form = InstallForm()
