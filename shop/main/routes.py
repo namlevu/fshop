@@ -4,8 +4,9 @@ from datetime import datetime
 
 from shop.main import bp
 from shop.main.forms import InstallForm
+#from shop import app, db, mongo
 from shop import app, db
-
+from shop.models import User, Photo
 
 @bp.before_app_request
 def before_request():
@@ -16,10 +17,19 @@ def before_request():
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def index():
-    return render_template('home/index.html')
+    u = User.query.all()[1]
+    #u = "fake"
+    return render_template('home/index.html', online_user=u)
 
+@bp.route('/new_user', methods=['GET'])
+def new_user():
+  p = Photo(url="https://cdn3.iconfinder.com/data/icons/cat-force/256/cat_hungry.png")
+  p.save()
+  u = User(username="meo", photo=p)
+  u.save()
+  return redirect(url_for('main.index'))
 
 @bp.route('/install', methods=['GET', 'POST'])
 def install():
