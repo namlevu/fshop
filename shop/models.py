@@ -5,21 +5,21 @@ from flask_login import UserMixin
 from shop import db
 from shop import login
 
-class Photo(db.Document):
+class Photo(db.EmbeddedDocument):
   url = db.StringField()
 
-class User(db.Document):
-  username = db.StringField(max_lenght=64, unique=True)
-  photo = db.DocumentField(Photo, required=False)
+class User(db.EmbeddedDocument):
+  username = db.StringField()
+  photo = db.EmbeddedDocumentField(Photo)
   fullname = db.StringField()
   email = db.StringField()
   password_hash = db.StringField()
-  disabled = db.BoolField()
+  disabled = db.BooleanField()
 
-class Cost(db.Document):
+class Cost(db.EmbeddedDocument):
   amount = db.IntField()
   reason = db.StringField()
-  created_by = db.DocumentField(User)
+  created_by = db.EmbeddedDocumentField(User)
   created_at = db.DateTimeField()
 
 class Product(db.Document):
@@ -27,12 +27,12 @@ class Product(db.Document):
   category = db.StringField()
   uuid = db.StringField()
   brand = db.StringField()
-  photos = db.TupleField(Photo)
-  costs = db.TupleField(Cost)
+  photos = db.EmbeddedDocumentListField(Photo)
+  costs = db.EmbeddedDocumentListField(Cost)
   sale_price = db.IntField()
-  created_by = db.DocumentField(User)
+  created_by = db.EmbeddedDocumentField(User)
   created_at = db.DateTimeField()
-  updated_by = db.DocumentField(User)
+  updated_by = db.EmbeddedDocumentField(User)
   updated_at = db.DateTimeField()
   history = db.StringField()
   note = db.StringField()

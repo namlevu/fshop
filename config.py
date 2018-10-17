@@ -1,14 +1,14 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-class Config(object):
-  SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-  'sqlite:///' + os.path.join(basedir, 'bshop-app.db')
-  SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-  #MONGO_URI = "mongodb://dbadmin:conmeo123@ds215709.mlab.com:15709/mshop"
-  MONGOALCHEMY_DATABASE = "mshop"
-  MONGOALCHEMY_SERVER = "ds215709.mlab.com"
-  MONGOALCHEMY_PORT = 15709
-  MONGOALCHEMY_USER = "dbadmin"
-  MONGOALCHEMY_PASSWORD = "conmeo123"
+class Config(object):
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'bshop-app.db')
+
+    #CONNECTION_STRING = "mongodb://username:password@mshop-shard-00-00-wuufk.gcp.mongodb.net:27017,mshop-shard-00-01-wuufk.gcp.mongodb.net:27017,mshop-shard-00-02-wuufk.gcp.mongodb.net:27017/test?ssl=true&replicaSet=mshop-shard-0&authSource=admin&retryWrites=true"
+    MONGODB_DB = "test"
+    MONGODB_HOST = "mshop-shard-00-00-wuufk.gcp.mongodb.net,mshop-shard-00-01-wuufk.gcp.mongodb.net,mshop-shard-00-02-wuufk.gcp.mongodb.net"
+    MONGODB_PORT = 27017
+    MONGODB_USERNAME = "username"
+    MONGODB_PASSWORD = "password"

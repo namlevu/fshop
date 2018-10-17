@@ -5,11 +5,13 @@ from flask_login import current_user, login_required
 from shop.dashboard import bp
 from shop import app, db
 
+
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
-#@login_required
+# @login_required
 def index():
     return render_template('dashboard/index.html')
+
 
 @bp.route('/product/')
 # /d/product
@@ -19,7 +21,9 @@ def index():
 # delete -> delete product
 def product():
     return render_template('dashboard/product/index.html')
-@bp.route('/product/')
+
+
+@bp.route('/user/')
 # /d/user
 # get/post/put/delete
 def user():

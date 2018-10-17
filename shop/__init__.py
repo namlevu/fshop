@@ -3,15 +3,15 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-from flask_mongoalchemy import MongoAlchemy
+from flask_mongoengine import MongoEngine
+db = MongoEngine()
 
 app = Flask(__name__)
 
 app.secret_key = b'www.namvl.com@ln'
 app.config.from_object(Config)
+db.init_app(app)
 
-db = MongoAlchemy(app)
-migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'auth.login'
 
@@ -28,6 +28,6 @@ from shop.main import bp as main_bp
 app.register_blueprint(main_bp)
 # -------------------------------------------------
 from shop.dashboard import bp as admin_bp
-app.register_blueprint(admin_bp)
+app.register_blueprint(admin_bp, url_prefix='/d')
 
 from shop import models
