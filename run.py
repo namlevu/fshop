@@ -7,4 +7,4 @@ port = int(os.getenv('PORT', 8000))
 #os.system("init_db.py")
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0',port=port)
+  app.run(host='0.0.0.0',port=port, debug=True)

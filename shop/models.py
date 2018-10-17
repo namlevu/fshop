@@ -5,7 +5,40 @@ from flask_login import UserMixin
 from shop import db
 from shop import login
 
+class Photo(db.Document):
+  url = db.StringField()
 
+class User(db.Document):
+  username = db.StringField(max_lenght=64, unique=True)
+  photo = db.DocumentField(Photo, required=False)
+  fullname = db.StringField()
+  email = db.StringField()
+  password_hash = db.StringField()
+  disabled = db.BoolField()
+
+class Cost(db.Document):
+  amount = db.IntField()
+  reason = db.StringField()
+  created_by = db.DocumentField(User)
+  created_at = db.DateTimeField()
+
+class Product(db.Document):
+  name = db.StringField()
+  category = db.StringField()
+  uuid = db.StringField()
+  brand = db.StringField()
+  photos = db.TupleField(Photo)
+  costs = db.TupleField(Cost)
+  sale_price = db.IntField()
+  created_by = db.DocumentField(User)
+  created_at = db.DateTimeField()
+  updated_by = db.DocumentField(User)
+  updated_at = db.DateTimeField()
+  history = db.StringField()
+  note = db.StringField()
+
+
+"""
 class Admin(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(32), index=True, unique=True)
@@ -75,3 +108,4 @@ class Cost(db.Model):
     reason = db.Column(db.String(256))
     created_at = db.Column(db.DateTime)
     note = db.Column(db.Text)
+"""
