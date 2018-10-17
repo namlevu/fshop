@@ -1,9 +1,9 @@
 # shop.models
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+#from flask_login import UserMixin
 
 from shop import db
-from shop import login
+#from shop import login
 
 class Photo(db.EmbeddedDocument):
   url = db.StringField()

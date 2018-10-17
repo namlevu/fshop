@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash, request, abort
-from flask_login import login_user, logout_user, current_user, login_required
+#from flask_login import login_user, logout_user, current_user, login_required
 
 from shop.auth.forms import LoginForm, ChangePasswordForm
 from shop.auth import bp
@@ -31,7 +31,7 @@ def logout():
   return redirect(url_for('main.index'))
 
 @bp.route('/changepass', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def changepass():
   form = ChangePasswordForm()
   error_msg = None

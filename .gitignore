@@ -6,7 +6,7 @@ migrations/
 */*/*/__pycache__/
 app.db
 *.pyc
-
+config.ini
 */*/.DS_Store
 */.DS_Store
 .DS_Store
